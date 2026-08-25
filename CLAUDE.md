@@ -17,7 +17,8 @@ de npm. A prioridade combinada com a Maryelle é
 ```
 index.html      → a página inteira (todas as seções, nesta ordem):
                    Hero, Sobre mim, Como posso te ajudar, Como funciona,
-                   Atendimentos, Frase de impacto, CTA final, Rodapé
+                   Atendimentos, Depoimentos, Frase de impacto, CTA final,
+                   Rodapé
 css/style.css    → tokens de cor/tipografia + todo o estilo + responsividade
 favicon.svg      → ícone da aba (monograma "MF" em terracota)
 assets/img/      → fotos reais da Maryelle (ver assets/img/README.md)
@@ -53,8 +54,21 @@ https://wa.me/5562994935712?text=Ol%C3%A1%2C%20Maryelle!%20Vim%20pelo%20seu%20si
 ```
 
 Se o número ou a mensagem mudarem, é preciso atualizar manualmente em
-cada ocorrência dentro do `index.html` (são 7 links idênticos) — não há
+cada ocorrência dentro do `index.html` (são 8 links idênticos) — não há
 constante compartilhada porque o projeto não usa JavaScript/build.
+
+## Depoimentos (2026-08-25)
+
+Seção `#depoimentos` entre Atendimento e Frase de impacto, com dois
+depoimentos reais de pacientes (identificados apenas como "Paciente",
+sem nome, sem foto). **São depoimentos reais fornecidos pela Maryelle —
+nunca inventar, ampliar ou reescrever o conteúdo além de pontuação
+mínima.** O segundo depoimento menciona resultados da própria paciente;
+não transformar isso em promessa/garantia de resultado para outros
+visitantes (nada de "você também vai conseguir" ou similar) — ele deve
+permanecer como relato individual. CTA discreto abaixo dos cards, sem
+bloco colorido de fundo, usando o mesmo link de WhatsApp do resto do
+site.
 
 ## Título do Hero (2026-08-25)
 
