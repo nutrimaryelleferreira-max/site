@@ -1,50 +1,71 @@
-# Site — Maryelle Ferreira, Nutricionista Clínica
+# Site — Maryelle Ferreira | Nutricionista Clínica
 
-Site institucional em Next.js (App Router) + Tailwind CSS v4, direção
-visual "Terracota Editorial" (paleta Vermelho Seco). Documentação
-completa de decisões de design, conteúdo e auditorias em [`CLAUDE.md`](./CLAUDE.md).
-
-## Rodando localmente
-
-```bash
-npm install
-npm run dev
-```
-
-Abra [http://localhost:3000](http://localhost:3000).
-
-## Build de produção
-
-```bash
-npm run build
-npm run start
-```
-
-## Antes de publicar
-
-1. **Domínio real:** `lib/seo.ts` usa `https://seudominio.com.br` como
-   placeholder. Troque pelo domínio definitivo (ou defina a variável de
-   ambiente `NEXT_PUBLIC_SITE_URL`) — afeta canonical, sitemap.xml,
-   robots.txt e Open Graph.
-2. **Contato:** a página `/contato` ainda não tem e-mail nem endereço do
-   consultório (não foram fornecidos). O WhatsApp já está configurado e
-   funcional em `lib/whatsapp.ts`.
+One page estática (HTML + CSS puro, sem JavaScript, sem framework, sem
+dependências de build). Feita para funcionar primeiro, ser bonita depois.
 
 ## Estrutura
 
 ```
-app/            → páginas (App Router) — Home, Sobre, Consultas,
-                  Como funciona, FAQ, Contato
-components/
-  sections/     → seções de página (Hero, Navbar, Footer, etc.)
-  ui/           → componentes base (Button, Card, Input, WhatsAppButton...)
-  seo/          → dados estruturados (JSON-LD)
-lib/            → configuração central (WhatsApp, SEO, dados do FAQ)
-public/images/  → fotos reais usadas no site
-public/fonts/   → Cormorant Garamond e Manrope autohospedadas
+index.html      → toda a página (Hero, Sobre, Serviços, Como funciona,
+                   Atendimento, Frase de impacto, CTA final, Rodapé)
+css/style.css    → todo o estilo (cores, tipografia, responsividade)
+favicon.svg      → ícone da aba do navegador (monograma "MF")
 ```
 
-## Stack
+Não há `app/`, `components/`, `package.json` nem `node_modules` — é HTML e
+CSS puros, sem etapa de build.
 
-Next.js 16 · TypeScript · Tailwind CSS v4 · componentes no padrão
-shadcn/ui (implementados manualmente, sem CLI — ver nota em `CLAUDE.md`).
+## Rodar localmente
+
+Não precisa instalar nada. Duas opções:
+
+1. **Mais simples:** dê duplo clique em `index.html` (ou clique com o botão
+   direito → "Abrir com" → seu navegador).
+2. **Com servidor local** (recomendado, evita qualquer restrição de
+   navegador para arquivos locais):
+   ```bash
+   npx serve .
+   ```
+   e abra o endereço mostrado no terminal (geralmente
+   `http://localhost:3000`).
+
+## Publicar na Vercel
+
+1. Suba este repositório para o GitHub (se ainda não estiver lá).
+2. Na Vercel, clique em **"Add New… → Project"** e importe o repositório.
+3. Em **Framework Preset**, escolha **"Other"** (site estático). Não é
+   necessário configurar Build Command nem Output Directory — a Vercel
+   serve os arquivos da raiz automaticamente.
+4. Clique em **Deploy**.
+
+### Antes de publicar de verdade
+
+- Troque `https://seudominio.com.br/` (em `index.html`, tags `canonical` e
+  `og:url`) pelo domínio real assim que ele existir.
+- Se quiser usar um domínio próprio, configure-o nas configurações do
+  projeto na Vercel após o primeiro deploy.
+
+## Imagens
+
+O site funciona hoje sem depender de nenhuma foto. Há um bloco decorativo
+em CSS no lugar da foto no Hero (`.hero-visual`). Quando você tiver a foto
+final, basta:
+
+1. Colocar o arquivo em uma pasta `assets/img/` (crie-a).
+2. No `index.html`, dentro de `<div class="hero-visual">`, adicionar:
+   ```html
+   <img src="/assets/img/maryelle.jpg" alt="Maryelle Ferreira, nutricionista clínica" />
+   ```
+3. No `css/style.css`, adicionar a regra:
+   ```css
+   .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+   ```
+
+## WhatsApp
+
+Todos os botões de agendamento usam o mesmo link, definido uma única vez
+em cada botão do `index.html`:
+
+```
+https://wa.me/5562994935712?text=Olá%2C%20Maryelle!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20consultas.
+```

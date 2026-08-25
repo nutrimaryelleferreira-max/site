@@ -1,0 +1,676 @@
+/* ============================================================
+   Maryelle Ferreira — Nutricionista Clínica
+   One page estática — HTML/CSS puro, sem dependências.
+   ============================================================ */
+
+:root {
+  --color-carvao: #262220;
+  --color-carvao-soft: #6b625a;
+  --color-vermelho: #a63a2c;
+  --color-vermelho-escuro: #7a2a1f;
+  --color-off-white: #faf6f1;
+  --color-bege: #efe6d8;
+  --color-bege-escuro: #e4d9c9;
+  --color-branco: #ffffff;
+
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --shadow-soft: 0 1px 3px rgba(38, 34, 32, 0.08), 0 1px 2px rgba(38, 34, 32, 0.06);
+
+  --container-width: 1100px;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-carvao);
+  background-color: var(--color-off-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: var(--color-carvao);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-vermelho);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 0;
+  }
+}
+
+/* Foco visível — acessibilidade */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+label:focus-visible {
+  outline: 2px solid var(--color-vermelho);
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--color-carvao);
+  color: var(--color-off-white);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-vermelho);
+  color: var(--color-off-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-vermelho-escuro);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-carvao);
+  border-color: var(--color-carvao);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-carvao);
+  color: var(--color-off-white);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .btn-block {
+    width: auto;
+  }
+}
+
+/* ---------- Header / Navegação ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(250, 246, 241, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-bege-escuro);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 0;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-carvao);
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.9375rem;
+  color: var(--color-carvao);
+}
+
+.nav-links a:hover {
+  color: var(--color-vermelho);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-cta {
+  display: none;
+}
+
+/* Menu mobile via checkbox hack — sem JavaScript */
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--color-bege-escuro);
+}
+
+#menu-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-icon {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+.menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-carvao);
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0;
+}
+.menu-icon span:nth-child(2) {
+  top: 6px;
+}
+.menu-icon span:nth-child(3) {
+  top: 12px;
+}
+
+#menu-checkbox:checked ~ .site-header-inner .menu-icon span:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+#menu-checkbox:checked ~ .site-header-inner .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+#menu-checkbox:checked ~ .site-header-inner .menu-icon span:nth-child(3) {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+.mobile-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+  border-top: 1px solid transparent;
+}
+
+#menu-checkbox:checked ~ .mobile-panel {
+  grid-template-rows: 1fr;
+  border-top-color: var(--color-bege-escuro);
+}
+
+.mobile-panel-inner {
+  overflow: hidden;
+}
+
+.mobile-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobile-panel a {
+  display: block;
+  padding: 0.75rem 0.25rem;
+  text-decoration: none;
+  color: var(--color-carvao);
+  font-size: 1rem;
+}
+
+.mobile-panel a:hover {
+  color: var(--color-vermelho);
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+  .nav-cta {
+    display: inline-flex;
+  }
+  .menu-toggle,
+  .mobile-panel {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 3rem 0 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 5rem 0 6rem;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}
+
+.hero-title {
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+.hero-text {
+  font-size: 1.125rem;
+  color: var(--color-carvao-soft);
+  max-width: 40ch;
+}
+
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bege);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, var(--color-vermelho) 0%, var(--color-vermelho) 45%, transparent 46%);
+  opacity: 0.9;
+}
+
+/*
+  Espaço reservado para a foto da Maryelle.
+  Quando a foto estiver disponível, substitua o <div class="hero-visual">
+  no HTML por:
+
+  <div class="hero-visual">
+    <img src="/assets/img/maryelle.jpg" alt="Maryelle Ferreira, nutricionista clínica" />
+  </div>
+
+  e adicione no CSS: .hero-visual img { width:100%; height:100%; object-fit:cover; }
+*/
+
+/* ---------- Seções gerais ---------- */
+.section-off-white {
+  background-color: var(--color-off-white);
+}
+
+.section-bege {
+  background-color: var(--color-bege);
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.section-header p {
+  color: var(--color-carvao-soft);
+  font-size: 1.0625rem;
+}
+
+/* ---------- Sobre ---------- */
+.sobre-grid {
+  display: grid;
+  gap: 1rem;
+  max-width: 720px;
+}
+
+/* ---------- Cards de serviços ---------- */
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--color-branco);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(38, 34, 32, 0.1);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--color-carvao-soft);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+/* ---------- Como funciona (etapas) ---------- */
+.steps-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--color-vermelho);
+  margin-bottom: 0.5rem;
+}
+
+.step h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  color: var(--color-carvao-soft);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+/* ---------- Atendimentos ---------- */
+.atendimento-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .atendimento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.atendimento-card {
+  background-color: var(--color-branco);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.atendimento-card h3 {
+  font-size: 1.375rem;
+  margin-bottom: 0;
+}
+
+.atendimento-card p {
+  color: var(--color-carvao-soft);
+  flex-grow: 1;
+}
+
+/* ---------- Frase de impacto ---------- */
+.frase-impacto {
+  background-color: var(--color-carvao);
+  color: var(--color-off-white);
+  text-align: center;
+}
+
+.frase-impacto blockquote {
+  margin: 0 auto 1rem;
+  max-width: 42rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (min-width: 768px) {
+  .frase-impacto blockquote {
+    font-size: 2rem;
+  }
+}
+
+.frase-impacto p.subtexto {
+  color: var(--color-bege-escuro);
+  font-size: 1.0625rem;
+  margin-bottom: 0;
+}
+
+/* ---------- CTA final ---------- */
+.cta-final {
+  background-color: var(--color-vermelho-escuro);
+  color: var(--color-off-white);
+  text-align: center;
+}
+
+.cta-final h2 {
+  color: var(--color-off-white);
+}
+
+.cta-final p {
+  color: var(--color-bege-escuro);
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.0625rem;
+}
+
+.cta-final .btn-primary {
+  background-color: var(--color-off-white);
+  color: var(--color-vermelho-escuro);
+}
+
+.cta-final .btn-primary:hover {
+  background-color: var(--color-bege);
+}
+
+/* ---------- Rodapé ---------- */
+.site-footer {
+  background-color: var(--color-carvao);
+  color: var(--color-bege);
+  padding: 3rem 0;
+}
+
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.footer-brand p {
+  margin: 0;
+  color: var(--color-bege-escuro);
+}
+
+.footer-brand strong {
+  color: var(--color-off-white);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--color-bege);
+  font-size: 0.9375rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-off-white);
+  text-decoration: underline;
+}
