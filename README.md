@@ -6,10 +6,12 @@ dependências de build). Feita para funcionar primeiro, ser bonita depois.
 ## Estrutura
 
 ```
-index.html      → toda a página (Hero, Sobre, Serviços, Como funciona,
-                   Atendimento, Frase de impacto, CTA final, Rodapé)
-css/style.css    → todo o estilo (cores, tipografia, responsividade)
-favicon.svg      → ícone da aba do navegador (monograma "MF")
+index.html         → toda a página (Hero, Sobre, Serviços, Como funciona,
+                      Atendimento, Frase de impacto, CTA final, Rodapé)
+css/style.css       → todo o estilo (cores, tipografia, responsividade)
+favicon.svg         → ícone da aba do navegador (monograma "MF")
+assets/img/         → pasta para as fotos reais da Maryelle (ver README
+                      dentro dela para instruções)
 ```
 
 Não há `app/`, `components/`, `package.json` nem `node_modules` — é HTML e
@@ -47,19 +49,16 @@ Não precisa instalar nada. Duas opções:
 
 ## Imagens
 
-O site funciona hoje sem depender de nenhuma foto. Há um bloco decorativo
-em CSS no lugar da foto no Hero (`.hero-visual`). Quando você tiver a foto
-final, basta:
+O site funciona hoje sem depender de nenhuma foto. Há blocos decorativos
+em CSS no lugar das fotos, no Hero (`.hero-visual`) e no Sobre
+(`.sobre-visual`) — não são um erro, é um placeholder de design
+intencional até as fotos reais entrarem.
 
-1. Colocar o arquivo em uma pasta `assets/img/` (crie-a).
-2. No `index.html`, dentro de `<div class="hero-visual">`, adicionar:
-   ```html
-   <img src="/assets/img/maryelle.jpg" alt="Maryelle Ferreira, nutricionista clínica" />
-   ```
-3. No `css/style.css`, adicionar a regra:
-   ```css
-   .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
-   ```
+Para adicionar suas fotos, veja `assets/img/README.md` — resumindo:
+coloque os arquivos em `assets/img/` com os nomes `maryelle-hero.jpg` e
+`maryelle-sobre.jpg`, e troque os dois `<div>` indicados por comentário
+no `index.html` pelo `<div>` com `<img>` (o CSS necessário já está
+pronto em `style.css`).
 
 ## WhatsApp
 

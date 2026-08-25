@@ -20,6 +20,7 @@ index.html      → a página inteira (todas as seções, nesta ordem):
                    Atendimentos, Frase de impacto, CTA final, Rodapé
 css/style.css    → tokens de cor/tipografia + todo o estilo + responsividade
 favicon.svg      → ícone da aba (monograma "MF" em terracota)
+assets/img/      → fotos reais da Maryelle (ver assets/img/README.md)
 README.md        → como rodar localmente e publicar na Vercel
 ```
 
@@ -55,13 +56,40 @@ Se o número ou a mensagem mudarem, é preciso atualizar manualmente em
 cada ocorrência dentro do `index.html` (são 7 links idênticos) — não há
 constante compartilhada porque o projeto não usa JavaScript/build.
 
+## Título do Hero (2026-08-25)
+
+O H1 do Hero é **"Nutrição que cabe na sua vida real."** — curto,
+proposital, é o maior elemento visual da página (`--hero-title`, até
+3.75rem no desktop). O subtítulo abaixo dele deve continuar curto (uma
+frase) para não sobrecarregar a primeira seção.
+
+## Fotos (2026-08-25)
+
+O Hero e a seção Sobre têm espaços reservados para fotos reais da
+Maryelle (`.hero-visual` e `.sobre-visual`) — hoje exibem um bloco
+decorativo em CSS (não é um placeholder "quebrado", é a aparência padrão
+até as fotos entrarem). **Nunca usar fotos de banco de imagens ou
+fabricar/gerar fotos dela** — só a foto real, fornecida por ela, deve
+ocupar esses espaços.
+
+Para ativar uma foto: seguir os comentários no `index.html` (trocam o
+`<div>` vazio por um `<div>` com `<img>`) e colocar o arquivo em
+`assets/img/` com o nome esperado — ver `assets/img/README.md` para os
+nomes exatos e a proporção recomendada (4:5). O CSS necessário
+(`object-fit: cover`, `z-index` sobre o bloco decorativo) já existe em
+`style.css`, não precisa ser adicionado.
+
+A seção Atendimento não recebeu fotos de alimentação/estilo de vida
+nesta rodada — a Maryelle marcou como opcional ("caso necessário"), e
+sem uma foto real disponível a decisão foi manter os cards só com texto
+em vez de usar imagem de banco genérica.
+
 ## Pendências conhecidas
 
 - `https://seudominio.com.br/` é um placeholder nas tags `canonical` e
   `og:url` do `index.html` — trocar pelo domínio real assim que existir.
-- Sem foto real ainda: o Hero usa um bloco decorativo em CSS
-  (`.hero-visual`) no lugar da imagem. Instruções para substituir por uma
-  foto real estão comentadas no `style.css` e no `README.md`.
+- Fotos reais da Maryelle ainda não foram adicionadas ao repositório
+  (ver seção "Fotos" acima).
 - Preços, endereço exato do consultório e horários não aparecem em
   nenhum lugar do site por não terem sido fornecidos — não inventar
   esses dados.
