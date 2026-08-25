@@ -65,19 +65,19 @@ frase) para não sobrecarregar a primeira seção.
 
 ## Fotos (2026-08-25)
 
-O Hero e a seção Sobre têm espaços reservados para fotos reais da
-Maryelle (`.hero-visual` e `.sobre-visual`) — hoje exibem um bloco
-decorativo em CSS (não é um placeholder "quebrado", é a aparência padrão
-até as fotos entrarem). **Nunca usar fotos de banco de imagens ou
-fabricar/gerar fotos dela** — só a foto real, fornecida por ela, deve
-ocupar esses espaços.
+O Hero (`.hero-visual`) e a seção Sobre (`.sobre-visual`) usam fotos
+reais da Maryelle, enviadas por ela diretamente no repositório:
+`assets/img/maryelle-hero.jpg` e `assets/img/maryelle-sobre.jpg`. A
+segunda veio com 3,7 MB e foi redimensionada/recomprimida para ~150 KB
+(1200px de largura, JPEG progressivo qualidade 82) para manter o site
+rápido — a primeira já veio leve (~188 KB) e não precisou de ajuste.
+**Nunca usar fotos de banco de imagens ou fabricar/gerar fotos dela** —
+só a foto real, fornecida por ela, deve ocupar esses espaços.
 
-Para ativar uma foto: seguir os comentários no `index.html` (trocam o
-`<div>` vazio por um `<div>` com `<img>`) e colocar o arquivo em
-`assets/img/` com o nome esperado — ver `assets/img/README.md` para os
-nomes exatos e a proporção recomendada (4:5). O CSS necessário
-(`object-fit: cover`, `z-index` sobre o bloco decorativo) já existe em
-`style.css`, não precisa ser adicionado.
+Para trocar por uma foto nova: ver `assets/img/README.md` (resumindo,
+basta substituir o arquivo mantendo o mesmo nome). O CSS necessário
+(`object-fit: cover`, `z-index` sobre o bloco decorativo que fica atrás
+da imagem) já existe em `style.css`.
 
 A seção Atendimento não recebeu fotos de alimentação/estilo de vida
 nesta rodada — a Maryelle marcou como opcional ("caso necessário"), e
@@ -88,8 +88,6 @@ em vez de usar imagem de banco genérica.
 
 - `https://seudominio.com.br/` é um placeholder nas tags `canonical` e
   `og:url` do `index.html` — trocar pelo domínio real assim que existir.
-- Fotos reais da Maryelle ainda não foram adicionadas ao repositório
-  (ver seção "Fotos" acima).
 - Preços, endereço exato do consultório e horários não aparecem em
   nenhum lugar do site por não terem sido fornecidos — não inventar
   esses dados.
