@@ -49,16 +49,14 @@ Não precisa instalar nada. Duas opções:
 
 ## Imagens
 
-O site funciona hoje sem depender de nenhuma foto. Há blocos decorativos
-em CSS no lugar das fotos, no Hero (`.hero-visual`) e no Sobre
-(`.sobre-visual`) — não são um erro, é um placeholder de design
-intencional até as fotos reais entrarem.
+O Hero e o Sobre já usam as fotos reais da Maryelle:
+`assets/img/maryelle-hero.jpg` e `assets/img/maryelle-sobre.jpg`. A
+segunda foi recomprimida (de ~3,7 MB para ~150 KB, redimensionada para
+1200px de largura) para manter o site rápido.
 
-Para adicionar suas fotos, veja `assets/img/README.md` — resumindo:
-coloque os arquivos em `assets/img/` com os nomes `maryelle-hero.jpg` e
-`maryelle-sobre.jpg`, e troque os dois `<div>` indicados por comentário
-no `index.html` pelo `<div>` com `<img>` (o CSS necessário já está
-pronto em `style.css`).
+Para trocar por outra foto no futuro, basta substituir o arquivo mantendo
+o mesmo nome, ou trocar o `src` do `<img>` correspondente no
+`index.html`. Detalhes em `assets/img/README.md`.
 
 ## WhatsApp
 
